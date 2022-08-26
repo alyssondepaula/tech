@@ -8,6 +8,7 @@
     "tsc": "tsc",
     "start:prod": "node build/server.js",
     "dev": "ts-node-dev --exit-child --transpile-only --ignore-watch node_modules src/server.ts",
+    "postinstall": "npm run tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
