@@ -1,1 +1,1 @@
-web: npm run tsc
+web: npm run dev
