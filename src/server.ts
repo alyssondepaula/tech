@@ -31,4 +31,4 @@ app.use((err: Error, request: Request, response: Response, next: NextFunction) =
     });
   });
   
-  app.listen(process.env.PORT || 3334, () => console.log('tech-api is running now!'));
+  app.listen(process.env.PORT || 3333);

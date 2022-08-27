@@ -7,6 +7,7 @@ import { ShowProductsController } from './modules/products/showProducts/ShowProd
 import { ShowProductsByCategoryController } from './modules/products/showProductsByCategory/showProductsByCategoryController';
 import { CreateProductController } from './modules/products/createProduct/createProductController';
 import { ShowCategoriesController } from './modules/categories/showCategories/ShowCategoriesController';
+  
 
 const routes = Router();
 
