@@ -1,19 +1,21 @@
 import { Router } from 'express';
-import { AuthController } from './modules/account/auth/AuthController';
 import multer from 'multer';
-import { uploadConfig } from './config/upload';
-import { CreateUserController } from './modules/users/createUser/createUserController';
-import { CreateProductUserCase } from './modules/products/createProduct/createProductUserCase'
-import { ShowProductsController } from './modules/products/showProducts/ShowProductsController';
-import { CreateProductController } from './modules/products/createProduct/createProductController';
 import path from 'path';
+import { AuthController } from './modules/account/auth/AuthController';
+import { CreateUserController } from './modules/users/createUser/createUserController';
+import { ShowProductsController } from './modules/products/showProducts/ShowProductsController';
+import { ShowProductsByCategoryController } from './modules/products/showProductsByCategory/showProductsByCategoryController';
+import { CreateProductController } from './modules/products/createProduct/createProductController';
+import { ShowCategoriesController } from './modules/categories/showCategories/ShowCategoriesController';
 
 const routes = Router();
 
 const authController = new AuthController();
 const createUserController = new CreateUserController(); 
 const showProductsController = new ShowProductsController(); 
+const showProductsByCategoryController = new ShowProductsByCategoryController(); 
 const createProductController = new CreateProductController(); 
+const showCategoriesController = new ShowCategoriesController(); 
 
 const uploadMiddleware: multer.Multer = multer({
     storage: multer.diskStorage({
@@ -32,18 +34,9 @@ routes.post('/login', authController.handle);
 routes.post('/users', createUserController.handle);
 
 routes.get('/products', showProductsController.handle);
+routes.get('/products/:category', showProductsByCategoryController.handle);
 routes.post('/products', uploadMiddleware.single("photo"), createProductController.handle);
 
-routes.get('/categories', authController.handle);
-routes.get('/categories/:id', authController.handle);
-routes.post('/categories', authController.handle);
-routes.put('/categories/:id', authController.handle);
-routes.delete('/categories/:id', authController.handle);
-
-routes.get('/reviews', authController.handle);
-routes.get('/reviews/:id', authController.handle);
-routes.post('/reviews', authController.handle);
-routes.put('/reviews/:id', authController.handle);
-routes.delete('/reviews/:id', authController.handle);
+routes.get('/categories', showCategoriesController.handle);
 
 export { routes };

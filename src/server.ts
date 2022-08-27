@@ -2,12 +2,14 @@ require('dotenv').config();
 
 import express, { NextFunction, Request, Response } from 'express';
 import 'express-async-errors';
+import path from 'path';
 
 import { routes } from './routes';
 
 const app = express();
 
 app.use(express.json());
+app.use('/files', express.static(path.resolve(__dirname, '..', 'uploads')))
 app.use(routes);
 
 app.use((err: Error, request: Request, response: Response, next: NextFunction) => {

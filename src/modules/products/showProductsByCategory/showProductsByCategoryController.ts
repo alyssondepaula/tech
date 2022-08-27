@@ -1,14 +1,14 @@
 import { Request, Response } from 'express';
 import { ShowProductsByCategoryUserCase } from './showProductsByCategoryUserCase';
 
-export class ShowProductsController {
+export class ShowProductsByCategoryController {
   async handle(request: Request, response: Response) {
 
-    const { filter } = request.params; 
+    const { category } = request.params; 
   
     const showProductsByCategoryUserCase = new ShowProductsByCategoryUserCase();
     const result = await showProductsByCategoryUserCase.execute({
-        filter
+         category
       });
 
     return response.json(result);

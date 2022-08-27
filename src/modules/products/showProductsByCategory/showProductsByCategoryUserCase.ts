@@ -1,16 +1,16 @@
 import { prisma } from '../../../database/prismaClient';
 
 interface ISHOWPRODUCTSBYCATEGORY {
-  filter: string;
+  category: string;
 }
 
 
 export class ShowProductsByCategoryUserCase {
-  async execute({filter}: ISHOWPRODUCTSBYCATEGORY) {
+  async execute({category}: ISHOWPRODUCTSBYCATEGORY) {
     
     const users = await prisma.product.findMany({
       where: {
-        category_id: filter
+        category_id: category
       }
     });
     return users;
