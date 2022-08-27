@@ -10,7 +10,7 @@ export class CreateProductController {
     const createProductUserCase = new CreateProductUserCase();
     const result = await createProductUserCase.execute({
       name,
-      photo: file?.fieldname as string,
+      photo: file?.filename as string,
       price, 
       color,
       category_id

@@ -10,13 +10,13 @@ interface IShowProductsUserCase{
 
 export class ShowProductsUserCase {
   async execute({limit}: IShowProductsUserCase) {
-    
-    const users = await prisma.product.findMany(
+
+    const products = await prisma.product.findMany(
        {
          take: limit,
        }
     );
-    return users;
+    return products;
 
   }
 }
