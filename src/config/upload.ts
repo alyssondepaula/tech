@@ -3,7 +3,9 @@ import path from "path"
 
 export const uploadConfig = {
     storage: multer.diskStorage({
-        destination: path.resolve(__dirname, '..', '..', 'uploads'),
+        destination: function (req, file, cb) {
+            cb(null, path.resolve(__dirname, '..', '..', 'uploads'))
+        },
         filename: (req, file, cb) => {
 
             const ext = path.extname(file.originalname)

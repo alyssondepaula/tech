@@ -1,5 +1,4 @@
-require('dotenv').config()
-require('./database/connect');
+require('dotenv').config();
 
 import express, { NextFunction, Request, Response } from 'express';
 import 'express-async-errors';

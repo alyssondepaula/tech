@@ -2,38 +2,13 @@ require('dotenv').config()
 
 import { compare } from 'bcrypt';
 import { sign } from 'jsonwebtoken';
-import { sequelize } from '../../../database/connect';
-import { User } from '../../../database/models/User';
-
-type TAUTH = {
-  firstName: string;
-  password: string;
-}
+import { prisma } from '../../../database/prismaClient';
 
 export class ShowProductsUserCase {
-  async execute({ firstName, password }: TAUTH) {
+  async execute() {
     
-     
-    const client: User | null = await User.findOne({
-      where: {
-        firstName,
-      },
-    });
+    const users = await prisma.product.findMany();
+    return users;
 
-
-    if (!client) {
-      throw new Error('Username or password invalid!');
-    }
-
-    
-
-    var secret: string = process.env.SECRET_KEY || "";
-
-    const token = sign({ firstName }, secret, {
-      subject: String(client.id),
-      expiresIn: '1d',
-    });
-
-    return token;
   }
 }
