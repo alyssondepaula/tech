@@ -1,18 +1,22 @@
 import { prisma } from '../../../database/prismaClient';
 
-interface ISHOWPRODUCTSBYCATEGORY {
+type ISHOWPRODUCTSBYCATEGORY = {
   category: string;
+  page: number | undefined;
+  limit: number | undefined;
+  order: Object;
 }
-
-
 export class ShowProductsByCategoryUserCase {
-  async execute({category}: ISHOWPRODUCTSBYCATEGORY) {
+  async execute({category, page, limit, order}: ISHOWPRODUCTSBYCATEGORY) {
     
-    const users = await prisma.product.findMany({
-      where: {
+    const products = await prisma.product.findMany({
+       where: {
         category_id: category
-      }
+       },
+       orderBy: order,
+       skip: page,
+       take: limit,
     });
-    return users;
+    return products;
   }
 }

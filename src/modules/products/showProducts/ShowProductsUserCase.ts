@@ -1,21 +1,22 @@
-require('dotenv').config()
-
-import { compare } from 'bcrypt';
-import { sign } from 'jsonwebtoken';
 import { prisma } from '../../../database/prismaClient';
 
-interface IShowProductsUserCase{
+type TSHOWPRODUCT = {
+  page: number | undefined;
   limit: number | undefined;
+  order: Object
 }
 
 export class ShowProductsUserCase {
-  async execute({limit}: IShowProductsUserCase) {
+  async execute({limit, page, order}: TSHOWPRODUCT) {
 
     const products = await prisma.product.findMany(
-       {
+      {
+         orderBy: order,
+         skip: page,
          take: limit,
-       }
+       },
     );
+
     return products;
 
   }

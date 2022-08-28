@@ -12,7 +12,6 @@ type TAUTH = {
 export class AuthUserCase {
   async execute({ email, password }: TAUTH) {
     
-     
     const user = await prisma.user.findUnique({
       where: {
         email: email
@@ -20,13 +19,13 @@ export class AuthUserCase {
     })
 
     if (!user) {
-      throw new Error('Username or password invalid!');
+      throw new Error('User invalid!');
     }
 
     const isSamePassword = await compare(password, user.password);
 
     if (!isSamePassword) {
-      throw new Error('Username or password invalid!');
+      throw new Error('Password invalid!');
     }
         
     var secret: string = process.env.SECRET_KEY || "";

@@ -9,7 +9,7 @@ export class CreateCategoryController {
     const createCategoryUserCase = new CreateCategoryUserCase();
     const result = await createCategoryUserCase.execute({
       name,
-      photo: file?.fieldname as string,
+      photo: file?.filename as string,
     });
 
     return response.json(result);

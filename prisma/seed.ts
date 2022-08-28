@@ -30,23 +30,23 @@ async function main() {
       });
 
       await prisma.product.create({
-        data: { name: 'Notebook VAIO® FE15 Intel® Core™ i7 Windows 11 Home 8GB 512GB SSD Full HD', photo: 'p1.png', price: '600.00', color: 'Prata', category_id: 'c3' }
+        data: { name: 'Notebook VAIO® FE15 Intel® Core™ i7 Windows 11 Home 8GB 512GB SSD Full HD', photo: 'p1.png', price: '600.00', color: 'Prata', discount: '10', rating: '3.5',category_id: 'c3' }
       });
 
       await prisma.product.create({
-        data: { name: 'Notebook VAIO® FE15 Intel® Core™ i7 Windows 11 Home 8GB 512GB SSD Full HD', photo: 'p2.png', price: '600.00', color: 'Preto', category_id: 'c3' }
+        data: { name: 'Notebook VAIO® FE15 Intel® Core™ i7 Windows 11 Home 8GB 512GB SSD Full HD', photo: 'p2.png', price: '600.00', color: 'Preto',  discount: '10', rating: '2.5',category_id: 'c3' }
       });
 
       await prisma.product.create({
-        data: { name: 'Notebook VAIO® FE15 Intel® Core™ i7 Windows 11 Home 8GB 512GB SSD Full HD', photo: 'p3.png', price: '600.00', color: 'Prata', category_id: 'c3' }
+        data: { name: 'Notebook VAIO® FE15 Intel® Core™ i7 Windows 11 Home 8GB 512GB SSD Full HD', photo: 'p3.png', price: '600.00', color: 'Prata',  discount: '10', rating: '4.5',category_id: 'c3' }
       });
 
       await prisma.product.create({
-        data: { name: 'Notebook VAIO® FE15 Intel® Core™ i7 Windows 11 Home 8GB 512GB SSD Full HD', photo: 'p4.png', price: '600.00', color: 'Prata', category_id: 'c3' }
+        data: { name: 'Notebook VAIO® FE15 Intel® Core™ i7 Windows 11 Home 8GB 512GB SSD Full HD', photo: 'p4.png', price: '600.00', color: 'Prata',  discount: '10', rating: '4.0', category_id: 'c3' }
       });
 
       await prisma.product.create({
-        data: { name: 'Notebook VAIO® FE15 Intel® Core™ i7 + Headphone G300', photo: 'p5.png', price: '600.00', category_id: 'c3' },
+        data: { name: 'Notebook VAIO® FE15 Intel® Core™ i7 + Headphone G300', photo: 'p5.png', price: '600.00',  discount: '10', rating: '5.0', category_id: 'c3' },
       });
 
 }

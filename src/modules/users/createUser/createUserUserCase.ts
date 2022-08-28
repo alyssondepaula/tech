@@ -2,7 +2,7 @@ require('dotenv').config()
 import { hash } from 'bcrypt';
 import { prisma } from '../../../database/prismaClient';
 
-interface ICreateClient {
+type TUSER = {
   firstName: string;
   lastName?: string
   email: string;
@@ -11,7 +11,7 @@ interface ICreateClient {
 }
 
 export class CreateUserUserCase {
-  async execute({ email, password, firstName, lastName }: ICreateClient) {
+  async execute({ email, password, firstName, lastName }: TUSER) {
     const clientExists = await prisma.user.findFirst({
       where: {
         email: email
